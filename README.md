@@ -52,19 +52,19 @@ void IRAM_ATTR triggerScan() {
   dmd.scanDisplayBySPI();
 }
 - Fungsi interrupt untuk refresh display
-IRAM_ATTR → agar cepat dieksekusi di interrupt
+- IRAM_ATTR → agar cepat dieksekusi di interrupt
 void initDMDTimer() {
   timer = timerBegin(0, 80, true);
   timerAttachInterrupt(timer, &triggerScan, true);
   timerAlarmWrite(timer, 2000, true);
   timerAlarmEnable(timer);
 }
-timerBegin() → buat timer hardware
-timerAttachInterrupt() → hubungkan ke triggerScan
-timerAlarmWrite() → interval interrupt (≈2ms)
-timerAlarmEnable() → aktifkan timer
-dmd.drawString(xPos, 0, runningText.c_str(), runningText.length(), GRAPHICS_NORMAL);
--xPos → posisi horizontal
+- timerBegin() → buat timer hardware
+- timerAttachInterrupt() → hubungkan ke triggerScan
+- timerAlarmWrite() → interval interrupt (≈2ms)
+- timerAlarmEnable() → aktifkan timer
+- dmd.drawString(xPos, 0, runningText.c_str(), runningText.length(), GRAPHICS_NORMAL);
+- xPos → posisi horizontal
 - 0 → posisi vertikal
 - runningText.c_str() → string ke format C
 - length() → panjang teks
