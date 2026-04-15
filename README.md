@@ -1,5 +1,5 @@
-# Running Text P10 with ESP32
-
+# Running Text P10 with ESP32 
+# NOTE: KODE INI HANYA AKAN BEKERJA DENGAN ESP32 VERSI 2.0.1 - 2.0.4 dikarenakan library DMD32 yang di gunakan tidak kompetible dengan versi lainnya
 Project ini saya buat sebagai materi pembelajaran di jurusan TKJ dan Teknik Elektronika pada SMKN 2 Manokwari
 
 ## Deskripsi Alat
