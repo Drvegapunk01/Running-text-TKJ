@@ -53,6 +53,85 @@ Fungsi ini digunakan untuk mengetahui ukuran EEPROM yang telah dialokasikan. Tid
 
 ## WiFI (ESP32)
 
+# Arduino WiFi Library
+
+Source:
+**Author:** Arduino `<info@arduino.cc>`  
+**Repository:** [Arduino WiFi Reference](https://www.arduino.cc/en/Reference/WiFi)
+
+## Pengertian Library WiFi Arduino
+
+Library WiFi Arduino adalah sebuah kumpulan kode (library) yang memungkinkan board Arduino untuk terhubung ke jaringan internet melalui WiFi Shield. Dengan library ini, board Arduino dapat berperan sebagai server yang menerima koneksi masuk maupun sebagai client yang melakukan koneksi keluar ke server lain. Library ini mendukung pengiriman dan penerimaan paket UDP, serta dapat mengelola DNS (Domain Name System).
+
+## Fungsi dan Tujuan
+
+Library ini dibuat untuk memberikan kemampuan konektivitas nirkabel pada proyek-proyek Arduino. Dengan menggunakan WiFi Shield dan library ini, Anda dapat membuat berbagai aplikasi seperti:
+
+- Mengirim data sensor ke server atau cloud
+- Mengontrol perangkat dari jarak jauh melalui web
+- Membuat web server sederhana yang dapat diakses melalui jaringan lokal
+- Mengambil data dari API (Application Programming Interface) internet
+- Berkomunikasi antar perangkat melalui jaringan WiFi
+
+## Hal yang Perlu Diperhatikan Sebelum Menggunakan
+
+### Kompatibilitas Shield
+Library ini dirancang khusus untuk **Arduino WiFi Shield**. Jika menggunakan shield lain, kompatibilitas tidak dijamin.
+
+### Firmware Update
+Firmware pada WiFi shield perlu diperbarui jika menggunakan Arduino IDE versi 1.0.5 ke atas. Pastikan untuk mengikuti panduan update yang tersedia agar shield berfungsi dengan baik.
+
+### Enkripsi yang Didukung
+Library ini mendukung jenis enkripsi berikut:
+- **WEP** (Wired Equivalent Privacy) - dengan key index dan hexadecimal key
+- **WPA2 Personal** - menggunakan password berupa string
+
+**Tidak mendukung:** WPA2 Enterprise
+
+### Keterbatasan Jaringan
+Jika SSID (Service Set Identifier) atau nama jaringan tidak dipublikasikan (hidden SSID), maka shield **tidak dapat** terhubung ke jaringan tersebut.
+
+### Konfigurasi Pin
+
+Arduino berkomunikasi dengan WiFi Shield melalui bus SPI (Serial Peripheral Interface):
+
+| Board | Pin SPI (MOSI, MISO, SCK) | Pin SS (Slave Select) | Pin Khusus |
+|-------|---------------------------|----------------------|------------|
+| Arduino Uno | 11, 12, 13 | 10 | Pin 7 untuk handshake (jangan digunakan) |
+| Arduino Mega | 50, 51, 52 | 10 | Pin 53 (SS hardware) harus dijaga sebagai OUTPUT, pin 7 untuk handshake |
+
+## Contoh Program Sederhana
+
+Berikut adalah contoh program minimal untuk menghubungkan Arduino ke jaringan WiFi:
+
+```cpp
+#include <WiFi.h>
+
+// Masukkan SSID dan password jaringan Anda
+char ssid[] = "namaJaringanAnda";
+char pass[] = "passwordJaringanAnda";
+
+void setup() {
+  Serial.begin(9600);
+  
+  // Mulai koneksi ke jaringan
+  WiFi.begin(ssid, pass);
+  
+  // Tunggu hingga terhubung
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Menghubungkan ke WiFi...");
+  }
+  
+  Serial.println("Terhubung ke WiFi!");
+  Serial.print("Alamat IP: ");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+  // Kode Anda di sini
+}
+
 ## WebServer (ESP32)
 
 ## DMD32
