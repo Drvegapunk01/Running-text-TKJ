@@ -51,9 +51,9 @@ Fungsi ini digunakan untuk mengakhiri penggunaan EEPROM dan membebaskan resource
 ### EEPROM.length()
 Fungsi ini digunakan untuk mengetahui ukuran EEPROM yang telah dialokasikan. Tidak memiliki parameter dan mengembalikan jumlah byte sesuai dengan nilai saat begin() dipanggil.
 
-## WiFI (ESP32)
 
-# Arduino WiFi Library
+
+# (WiFI) Arduino WiFi Library
 
 Source:
 **Author:** Arduino `<info@arduino.cc>`  
